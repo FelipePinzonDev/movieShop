@@ -50,7 +50,7 @@ router.get('/:id', getMovie, async (req, res) => {
 
 //Update all data
 
-router.put('/', getMovie, async (req, res) => {
+router.put('/:id', getMovie, async (req, res) => {
   try {
     const movie = res.movie
     movie.title = req.body.title || movie.title
@@ -69,7 +69,7 @@ router.put('/', getMovie, async (req, res) => {
 
 //Update at least one field
 
-router.patch('/', getMovie, async (req, res) => {
+router.patch('/:id', getMovie, async (req, res) => {
   if (
     !req.body.title &&
     !req.body.author &&
