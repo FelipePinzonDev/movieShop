@@ -51,6 +51,15 @@ router.get('/:id', getMovie, async (req, res) => {
 //Update all data
 
 router.put('/:id', getMovie, async (req, res) => {
+  if (
+    !req.body.title ||
+    !req.body.author ||
+    !req.body.genre ||
+    !req.body.publication_date ||
+    !req.body.original_language
+  ) {
+    res.status(400).json({ message: 'You need to pass all of the arguments' })
+  }
   try {
     const movie = res.movie
     movie.title = req.body.title || movie.title
